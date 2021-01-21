@@ -4,7 +4,7 @@ const { connection } = require("../db/connection");
 require("dotenv").config({ path: ".env" });
 
 //Funcion para mostrar todas las compañias
-async function mostrarCompanies() {
+exports.mostrarCompanies = async () => {
   try {
     const resultado = await connection.query("SELECT * FROM companies ORDER BY name", {
       type: sequelize.QueryTypes.SELECT,
@@ -13,10 +13,10 @@ async function mostrarCompanies() {
   } catch (err) {
     return err;
   }
-}
+};
 
 //Funcion para crear una compañia
-async function crearCompany(id_citie, address, name, email, tel) {
+exports.crearCompany = async (id_citie, address, name, email, tel) => {
   try {
     const resultado = await connection.query("INSERT INTO companies VALUES (NULL, ?, ?, ?, ?, ?)", {
       replacements: [id_citie, address, name, email, tel],
@@ -25,10 +25,10 @@ async function crearCompany(id_citie, address, name, email, tel) {
   } catch (err) {
     return err;
   }
-}
+};
 
 //Funcion para eliminar una compañia
-async function borrarCompany(id) {
+exports.borrarCompany = async id => {
   try {
     const resultado = await connection.query("DELETE FROM companies WHERE id_company = :id", {
       type: sequelize.QueryTypes.DELETE,
@@ -38,10 +38,10 @@ async function borrarCompany(id) {
   } catch (err) {
     return err;
   }
-}
+};
 
 //Funcion para actualizar una compañia
-async function actualizarCompany(id, nuevoId_citie, nuevoAddress, nuevoName, nuevoEmail, nuevoTel) {
+exports.actualizarCompany = async (id, nuevoId_citie, nuevoAddress, nuevoName, nuevoEmail, nuevoTel) => {
   try {
     const resultado = await connection.query("UPDATE companies SET id_citie = :nuevoId_citie, adress = :nuevoAddress, name = :nuevoName, tel = :nuevoTel  WHERE contacts.id_contacts = :id", {
       type: sequelize.QueryTypes.PUT,
@@ -58,11 +58,4 @@ async function actualizarCompany(id, nuevoId_citie, nuevoAddress, nuevoName, nue
   } catch (err) {
     return err;
   }
-}
-
-module.exports = {
-  mostrarCompanies: mostrarCompanies,
-  crearCompany: crearCompany,
-  borrarCompany: borrarCompany,
-  actualizarCompany: actualizarCompany,
 };

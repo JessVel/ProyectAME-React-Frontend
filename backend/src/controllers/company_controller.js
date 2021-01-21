@@ -1,8 +1,6 @@
 const { mostrarCompanies, crearCompany, borrarCompany, actualizarCompany } = require("../services/company_services");
 
-
-
-const borrarCompanyController = async (req, res) => {
+exports.borrarCompanyController = async (req, res) => {
   const resultados = await borrarCompany(req.params.id);
   try {
     res.status(200).json({ msg: `Contacto eliminado con exito!` });
@@ -12,7 +10,7 @@ const borrarCompanyController = async (req, res) => {
   }
 };
 
-const mostrarCompaniesController = async (req, res) => {
+exports.mostrarCompaniesController = async (req, res) => {
   try {
     const resultados = await mostrarCompanies();
     res.status(200).json({ msg: `Compañías mostradas con éxito!` });
@@ -22,7 +20,7 @@ const mostrarCompaniesController = async (req, res) => {
   }
 };
 
-const crearCompanyController = async (req, res) => {
+exports.crearCompanyController = async (req, res) => {
   const { id_citie, address, name, email, tel } = req.body;
   try {
     const resultados = await crearCompany(id_citie, address, name, email, tel);
@@ -33,7 +31,7 @@ const crearCompanyController = async (req, res) => {
   }
 };
 
-const actualizarCompanyController = async (req, res) => {
+exports.actualizarCompanyController = async (req, res) => {
   const id = req.params.id;
   const { nuevoId_citie, nuevoAddress, nuevoName, nuevoEmail, nuevoTel } = req.body;
   try {
@@ -43,11 +41,4 @@ const actualizarCompanyController = async (req, res) => {
   } catch (e) {
     return res.status(400).json({ error: true, message: `Hubo un error al intentar actualizar la compañia, vuelve a intentarlo.${e.errsmg}` });
   }
-};
-
-module.exports = {
-  mostrarCompaniesController: mostrarCompaniesController,
-  borrarCompanyController: borrarCompanyController,
-  crearCompanyController: crearCompanyController,
-  actualizarCompanyController: actualizarCompanyController,
 };

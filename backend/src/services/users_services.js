@@ -4,7 +4,7 @@ const { connection } = require("../db/connection");
 require("dotenv").config({ path: ".env" });
 const jwt = require("jsonwebtoken");
 
-async function buscarUsuario(user, password) {
+exports.buscarUsuario = async (user, password) => {
   try {
     const resultado = await connection.query(`SELECT * FROM users WHERE user = :user AND password = :password`, {
       type: sequelize.QueryTypes.SELECT,
@@ -24,9 +24,9 @@ async function buscarUsuario(user, password) {
   } catch (err) {
     return err;
   }
-}
+};
 
-async function getUsuario(user, password) {
+exports.getUsuario = async (user, password) => {
   try {
     const resultado = await connection.query("SELECT * FROM users WHERE user = :user AND password = :password", {
       type: sequelize.QueryTypes.SELECT,
@@ -36,10 +36,10 @@ async function getUsuario(user, password) {
   } catch (err) {
     return err;
   }
-}
+};
 
 // Crear usuario
-async function crearUsuario(user, name, lastname, email, password, es_admin) {
+exports.crearUsuario = async (user, name, lastname, email, password, es_admin) => {
   try {
     const resultado = await connection.query("INSERT INTO users VALUES (NULL, ?, ?, ?, ?, ?, 'F')", {
       replacements: [user, name, lastname, email, password, es_admin],
@@ -48,10 +48,10 @@ async function crearUsuario(user, name, lastname, email, password, es_admin) {
   } catch (err) {
     return err;
   }
-}
+};
 
 //Crear admin
-async function crearAdmin(user, name, lastname, email, password, es_admin) {
+exports.crearAdmin = async (user, name, lastname, email, password, es_admin) => {
   try {
     const resultado = await connection.query("INSERT INTO users VALUES (NULL, ?, ?, ?, ?, ?, 'T')", {
       replacements: [user, name, lastname, email, password, es_admin],
@@ -60,10 +60,10 @@ async function crearAdmin(user, name, lastname, email, password, es_admin) {
   } catch (err) {
     return err;
   }
-}
+};
 
 //VALIDAR USUARIO y crea token
-function esUnUsuarioValido(user, password) {
+exports.esUnUsuarioValido = async (user, password) => {
   const usuario = buscarUsuario(user, password);
   console.log(usuario);
   if (usuario === "true") {
@@ -73,10 +73,4 @@ function esUnUsuarioValido(user, password) {
   } else {
     return false;
   }
-}
-
-module.exports.buscarUsuario = buscarUsuario;
-module.exports.getUsuario = getUsuario;
-module.exports.crearUsuario = crearUsuario;
-module.exports.esUnUsuarioValido = esUnUsuarioValido;
-module.exports.crearAdmin = crearAdmin;
+};

@@ -1,12 +1,12 @@
 const { mostrarRoles, crearRole, borrarRole } = require("../services/roles_services");
 
-const mostrarRolesController = async (req, res) => {
+exports.mostrarRolesController = async (req, res) => {
   const resultados = await mostrarRoles();
   res.status(200).json({ resultados });
   console.log(resultados);
 };
 
-const crearRoleController = async (req, res) => {
+exports.crearRoleController = async (req, res) => {
   const { name } = req.body;
   try {
     const resultados = await crearRole(name);
@@ -17,14 +17,8 @@ const crearRoleController = async (req, res) => {
   }
 };
 
-const borrarRoleController = async (req, res) => {
+exports.borrarRoleController = async (req, res) => {
   const resultados = await borrarRole(req.params.id);
   res.status(200).json({ resultados });
   console.log(resultados);
-};
-
-module.exports = {
-  mostrarRolesController: mostrarRolesController,
-  crearRoleController: crearRoleController,
-  borrarRoleController: borrarRoleController,
 };

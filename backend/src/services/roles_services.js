@@ -4,7 +4,7 @@ const { connection } = require("../db/connection");
 require("dotenv").config({ path: ".env" });
 
 //Funcion para mostrar todos los roles
-async function mostrarRoles() {
+exports.mostrarRoles = async () => {
   try {
     const resultado = await connection.query("SELECT * FROM roles ORDER BY name", {
       type: sequelize.QueryTypes.SELECT,
@@ -13,10 +13,10 @@ async function mostrarRoles() {
   } catch (err) {
     return err;
   }
-}
+};
 
 //Funcion para crear un rol
-async function crearRole(name) {
+exports.crearRole = async name => {
   try {
     const resultado = await connection.query("INSERT INTO role VALUES (NULL, ?)", {
       replacements: [name],
@@ -26,10 +26,10 @@ async function crearRole(name) {
   } catch (err) {
     return err;
   }
-}
+};
 
 //Funcion para eliminar un rol
-async function borrarRole(id) {
+exports.borrarRole = async id => {
   try {
     const resultado = await connection.query("DELETE FROM roles WHERE id = :id", {
       replacements: { id: id },
@@ -38,10 +38,4 @@ async function borrarRole(id) {
   } catch (err) {
     return err;
   }
-}
-
-module.exports = {
-  mostrarRoles: mostrarRoles,
-  crearRole: crearRole,
-  borrarRole: borrarRole,
 };
