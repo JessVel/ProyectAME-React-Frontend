@@ -1,17 +1,22 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LogIn from "./components/auth/LogIn";
+import SingIn from "./components/auth/SingIn";
+import Home from "./components/Home/Home";
+
+import AlertState from './context/alert/alertState';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>haaalaaa</p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AlertState>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={LogIn} />
+        <Route exact path="/singin" component={SingIn} />
+        <Route exact path="/home" component={Home} />
+      </Switch>
+    </Router>
+    </AlertState>
   );
 }
 
