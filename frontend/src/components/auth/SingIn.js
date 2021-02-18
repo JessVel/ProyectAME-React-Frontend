@@ -53,7 +53,7 @@ const SingIn = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (user.trim() === "" || email.trim() === "" || password.trim() === "" || confirm.trim() === "") {
+    if (user.trim() === "" || name.trim() === "" || lastname.trim() === "" || email.trim() === "" || password.trim() === "" || confirm.trim() === "") {
       showAlert("Todos los campos son obligatios", "alerta-error");
       return;
     }

@@ -22,8 +22,8 @@ exports.validateUser = async (req, res) => {
     }
 
     const payload = {
-      usuario: {
-        id: usuario.id,
+      user: {
+        id: user.id,
       },
     };
 
@@ -47,7 +47,7 @@ exports.validateUser = async (req, res) => {
 //Obtener usuario autenticado
 exports.userAuthentic = async (req, res) => {
   try {
-    const usuario = await UserModel.findById(req.usuario.id);
+    const usuario = await UserModel.findById(req.user.id);
     res.json({ usuario });
     console.log(usuario);
   } catch (error) {
