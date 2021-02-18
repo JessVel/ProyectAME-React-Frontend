@@ -1,39 +1,69 @@
-import { useState } from "react";
-import {Link} from 'react-router-dom';
+import { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
+import AlertContext from "../../context/alert/alertContext";
+import AuthContext from "../../context/authentication/authContext";
 
+import AniWelcome from "../animation/animationWelcome";
+import Swal from "sweetalert2";
 
-const LogIn = () => {
+const LogIn = (props) => {
+  const { message, authentication, logInUser } = useContext(AuthContext);
+
+  const { alert, showAlert } = useContext(AlertContext);
+
+  //toma errores de validacion de usuario
+  useEffect(() => {
+    if (authentication) {
+      props.history.push("/home");
+      Swal.fire("Bienvenido 😄", `Te extrañamos, ${user}!`, "success");
+    }
+    if (message) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: message.msg,
+      });
+    }
+  }, [authentication, message, props.history]);
+
   // State para iniciar sesion
-  const [user, setUser] = useState({
+  const [userValues, setUserValues] = useState({
     user: "",
     password: "",
   });
 
   // Extraer datos de usuario
-  const { usuario, password } = user;
+  const { user, password } = userValues;
 
-  const onChange = e =>{
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value
-    })
-  }
+  const onChange = (e) => {
+    setUserValues({
+      ...userValues,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   //iniciar sesion
-  const onSubmit = e =>{
+  const onSubmit = (e) => {
     e.preventDefault();
-  }
+
+    if (user.trim() === "" || password.trim() === "") {
+      showAlert("Todos los campos son obligatorios", "alerta-error");
+      return;
+    }
+
+    logInUser({ user, password });
+  };
 
   return (
     <div className="form-usuario">
+      <AniWelcome />
+      {alert ? <div className={`alerta ${alert.category}`}>{alert.msg}</div> : null}
       <div className="contenedor-form sombra-dark">
         <h1>Iniciar sesión</h1>
-        <form
-         onSubmit={onSubmit}
-        >
+        <form onSubmit={onSubmit}>
           <div className="campo-form">
             <label htmlFor="user">Usuario</label>
-            <input type="user" id="user" name="user" placeholder="Ingresa tu usuario" value={usuario} onChange={onChange} />
+            <input type="user" id="user" name="user" placeholder="Ingresa tu usuario" value={user} onChange={onChange} />
           </div>
 
           <div className="campo-form">
@@ -45,7 +75,9 @@ const LogIn = () => {
           </div>
         </form>
 
-        <Link to={'/singin'} className="enlace-cuenta">Obtener cuenta</Link>
+        <Link to={"/singin"} className="enlace-cuenta">
+          Obtener cuenta
+        </Link>
       </div>
     </div>
   );

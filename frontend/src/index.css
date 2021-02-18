@@ -4,6 +4,7 @@
   --gris2: #2f3848;
   --gris3: #1a202d;
   --negro: #000000;
+  --orange: #ff6900;
   --headingFont: "Raleway", sans-serif;
   --textFont: "Roboto", sans-serif;
 }
@@ -19,10 +20,10 @@ html {
 }
 body {
   min-height: 100%;
-  background-color: var(--gris1);
   font-size: 16px;
   font-size: 1.6rem;
   font-family: var(--textFont);
+  background-color: rgb(255, 198, 124);
 }
 
 h1,
@@ -50,6 +51,7 @@ ul {
 a {
   text-decoration: none;
   color: var(--gris2);
+  text-align: center;
 }
 
 /** BOTONES **/
@@ -59,7 +61,7 @@ a {
   padding: 1.5rem;
   font-size: 1.4;
   font-weight: 400;
-  border-radius: 0.5rem;
+  border-radius: 50px;
   border: none;
   transition: background-color 0.3s ease;
 }
@@ -67,7 +69,7 @@ a {
   cursor: pointer;
 }
 .btn-primario {
-  background-color: var(--gris2);
+  background-color: var(--orange);
   color: var(--blanco);
 }
 .btn-primario:hover {
@@ -280,18 +282,19 @@ aside {
 }
 
 .form-usuario {
-  background-color: var(--gris2);
+  background-color: rgb(255, 198, 124);
   height: 100vh;
   min-height: 800px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: row;
 }
 
 .contenedor-form {
   padding: 5rem 3rem;
   max-width: 500px;
-  width: 95%;
+  width: 80%;
   background-color: var(--blanco);
   border-radius: 1rem;
 }
@@ -313,6 +316,7 @@ aside {
 .campo-form input[type="text"],
 .campo-form input[type="email"] {
   border: 1px solid #e1e1e1;
+  border-radius: 50px;
   padding: 1rem;
   flex: 1;
 }
@@ -342,6 +346,42 @@ aside {
     top: 30px;
     right: 10px;
     left: auto;
+  }
+}
+
+.anim-container {
+  height: 100%;
+  width: 45%;
+}
+.animation {
+  width: 100%;
+}
+
+@media (max-width: 360px) {
+  label {
+    display: none;
+  }
+
+  .form-usuario {
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .contenedor-form {
+    width: 100%;
+    border-top-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+    padding-bottom: 150px;
+  }
+
+  .animation {
+    width: 100%;
+    padding-top: 50px;
+  }
+  .anim-container {
+    width: 100%;
+    padding-top: 50%;
   }
 }
 
