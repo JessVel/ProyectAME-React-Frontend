@@ -1,7 +1,6 @@
-# Data Warehouse 🚀
+# ProyectAME😍 
 
-### Proyecto del curso de Desarrollo Full Stack de Acámica 👩‍💻
+### Administrador de proyectos hecho en React
 
-Generarás una herramienta que permita a una compañía de Marketing administrar todos los contactos de sus clientes para sus campañas.
 
 ## PROYECTO EN CONSTRUCCIÓN 🚧
