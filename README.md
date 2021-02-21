@@ -5,4 +5,4 @@
 
 ## Mobile design
 
-![ScreenShot](https://raw.github.com/JessVel/ProyectAME-React/frontend/main/src/assets/screenshoots/mobile/ProyectAME(10).png) 
+![ScreenShot](https://raw.github.com/JessVel/ProyectAME-React/main/frontend/src/assets/screenshoots/mobile/ProyectAME(10).png) 
