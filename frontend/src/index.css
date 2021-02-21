@@ -93,6 +93,12 @@ a {
   background-color: transparent;
 }
 
+.btn-blank:focus {
+  color: var(--pink);
+  font-weight: bolder;
+  outline: none;
+}
+
 .btn-eliminar {
   margin: 0;
   height: 30%;
@@ -284,7 +290,7 @@ aside {
 }
 
 .contenedor-form {
-  padding: 5rem;
+  padding: 5rem 10rem;
   width: 50%;
   height: 100%;
   background-color: var(--blanco);
@@ -304,6 +310,7 @@ aside {
 .campo-form label {
   flex: 0 0 100px;
   font-family: var(--textFont);
+  font-weight: bold;
 }
 .campo-form input[type="password"],
 .campo-form input[type="user"],
