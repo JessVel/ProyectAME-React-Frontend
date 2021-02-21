@@ -1,9 +1,26 @@
-export const SHOW_ALERT = 'SHOW_ALERT';
-export const HIDE_ALERT = 'HIDE_ALERT';
+//Alerta
+export const SHOW_ALERT = "SHOW_ALERT";
+export const HIDE_ALERT = "HIDE_ALERT";
 
-export const REGISTER_SUCESS = 'REGISTER_SUCESS';
-export const REGISTER_ERROR = 'REGISTER_ERROR';
-export const GET_USER = 'GET_USER';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-export const LOG_OUT = 'LOG_OUT';
+//Login y SingIn
+export const REGISTER_SUCESS = "REGISTER_SUCESS";
+export const REGISTER_ERROR = "REGISTER_ERROR";
+export const GET_USER = "GET_USER";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_ERROR = "LOGIN_ERROR";
+export const LOG_OUT = "LOG_OUT";
+
+//Proyectos
+export const FORMULARIO_PROYECTO = "FORMULARIO_PROYECTO";
+export const OBTENER_PROYECTOS = "OBTENER_PROYECTOS";
+export const AGREGAR_PROYECTO = "AGREGAR_PROYECTO";
+export const PROYECTO_ACTUAL = "PROYECTO_ACTUAL";
+export const ELIMINAR_PROYECTO = "ELIMINAR_PROYECTO";
+
+//Tareas
+export const TAREAS_PROYECTO = "TAREAS_PROYECTO";
+export const AGREGAR_TAREA = "AGREGAR_TAREA";
+export const ELIMINAR_TAREA = "ELIMINAR_TAREA";
+export const ESTADO_TAREA = "ESTADO_TAREA";
+export const TAREA_ACTUAL = "TAREA_ACTUAL";
+export const ACTUALIZAR_TAREA = "ACTUALIZAR_TAREA";
