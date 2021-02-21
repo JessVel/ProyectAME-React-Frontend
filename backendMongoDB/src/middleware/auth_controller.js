@@ -5,9 +5,7 @@ const jwt = require("jsonwebtoken");
 
 exports.validateUser = async (req, res) => {
   //extraer user, password y tipo de usuario
-  const { id, user, password } = req.body;
-
-  //Revisar si es administrador
+  const { user, password } = req.body;
 
   try {
     let usuario = await UserModel.findOne({ user });
@@ -23,7 +21,7 @@ exports.validateUser = async (req, res) => {
 
     const payload = {
       user: {
-        id: user.id,
+        id: usuario.id,
       },
     };
 

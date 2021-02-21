@@ -11,7 +11,7 @@ const AnimationWelcome = () => {
   };
 
   return (
-    <div className="anim-container">
+    <div className="anim-container pt-0">
       <Lottie options={defaultOptions} className="animation" />
     </div>
   );

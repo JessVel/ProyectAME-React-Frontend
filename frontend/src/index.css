@@ -148,9 +148,11 @@ aside {
 .nombre-usuario span {
   font-weight: 900;
 }
-.nav-principal a {
+.nav-principal button {
   color: var(--blanco);
-  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
 }
 .nav-principal a:first-of-type {
   margin-right: 2rem;
@@ -396,7 +398,7 @@ aside {
   .nav-principal {
     position: relative;
   }
-  .nav-principal a {
+  .nav-principal button {
     position: absolute;
     font-size: small;
     left: -20px;
@@ -424,6 +426,10 @@ aside {
   .btn-eliminar {
     margin: 0 0 20px 0;
     width: 70%;
+  }
+
+  .pt-0 {
+    padding-top: 0;
   }
 }
 
