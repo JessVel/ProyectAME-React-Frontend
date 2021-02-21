@@ -78,9 +78,7 @@ a {
 .btn-primario:hover {
   background: #ffd500;
 }
-/* .btn-secundario {
-  background-color: var(--gris1);
-} */
+
 .btn-block {
   display: block;
   width: 100%;
@@ -273,7 +271,7 @@ aside {
 }
 
 .form-usuario {
-  background-color: rgb(255, 198, 124);
+  /* background-color: rgb(255, 198, 124); */
   height: 100vh;
   display: flex;
   align-items: center;
@@ -287,8 +285,7 @@ aside {
 
 .contenedor-form {
   padding: 5rem;
-  max-width: 500px;
-  width: 80%;
+  width: 50%;
   height: 100%;
   background-color: var(--blanco);
   display: flex;
@@ -316,6 +313,13 @@ aside {
   border-radius: 50px;
   padding: 1rem;
   flex: 1;
+  outline: none;
+}
+
+.contenedor-form .input-focus:focus {
+  box-shadow: -1px 0px 9px 2px rgba(255, 64, 145, 0.56);
+  -webkit-box-shadow: -1px 0px 9px 2px rgba(255, 64, 145, 0.56);
+  -moz-box-shadow: -1px 0px 9px 2px rgba(255, 64, 145, 0.56);
 }
 
 .enlace-cuenta {

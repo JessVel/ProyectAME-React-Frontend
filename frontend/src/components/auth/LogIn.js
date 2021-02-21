@@ -63,12 +63,12 @@ const LogIn = (props) => {
         <form onSubmit={onSubmit}>
           <div className="campo-form">
             <label htmlFor="user">Usuario</label>
-            <input type="user" id="user" name="user" placeholder="Ingresa tu usuario" value={user} onChange={onChange} />
+            <input className="input-focus" type="user" id="user" name="user" placeholder="Ingresa tu usuario" value={user} onChange={onChange} />
           </div>
 
           <div className="campo-form">
             <label htmlFor="password">Contraseña</label>
-            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" value={password} onChange={onChange} />
+            <input className="input-focus" type="password" id="password" name="password" placeholder="Ingresa tu contraseña" value={password} onChange={onChange} />
           </div>
           <div className="campo-form">
             <input type="submit" className="btn btn-primario btn-block" value="Iniciar sesión" />

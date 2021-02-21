@@ -81,32 +81,32 @@ const SingIn = (props) => {
           <form onSubmit={onSubmit}>
             <div className="campo-form">
               <label htmlFor="user">usuario</label>
-              <input type="text" id="user" name="user" placeholder="Ingresa tu usuario" value={user} onChange={onChange} />
+              <input className="input-focus" type="text" id="user" name="user" placeholder="Ingresa tu usuario" value={user} onChange={onChange} />
             </div>
 
             <div className="campo-form">
               <label htmlFor="user">Nombre</label>
-              <input type="text" id="name" name="name" placeholder="Ingresa tu nombre" value={name} onChange={onChange} />
+              <input className="input-focus" type="text" id="name" name="name" placeholder="Ingresa tu nombre" value={name} onChange={onChange} />
             </div>
 
             <div className="campo-form">
               <label htmlFor="user">Apellido</label>
-              <input type="text" id="lastname" name="lastname" placeholder="Ingresa tu apellido" value={lastname} onChange={onChange} />
+              <input className="input-focus" type="text" id="lastname" name="lastname" placeholder="Ingresa tu apellido" value={lastname} onChange={onChange} />
             </div>
 
             <div className="campo-form">
               <label htmlFor="password">E-mail</label>
-              <input type="email" id="email" name="email" placeholder="Ingresa tu e-mail" value={email} onChange={onChange} />
+              <input className="input-focus" type="email" id="email" name="email" placeholder="Ingresa tu e-mail" value={email} onChange={onChange} />
             </div>
 
             <div className="campo-form">
               <label htmlFor="password">Contraseña</label>
-              <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" value={password} onChange={onChange} />
+              <input className="input-focus" type="password" id="password" name="password" placeholder="Ingresa tu contraseña" value={password} onChange={onChange} />
             </div>
 
             <div className="campo-form">
               <label htmlFor="confirmar">Confirmar contraseña</label>
-              <input type="password" id="confirmar" name="confirm" placeholder="Confirma tu contraseña" value={confirm} onChange={onChange} />
+              <input className="input-focus" type="password" id="confirmar" name="confirm" placeholder="Confirma tu contraseña" value={confirm} onChange={onChange} />
             </div>
 
             <div className="campo-form">
