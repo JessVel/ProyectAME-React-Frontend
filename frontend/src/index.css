@@ -153,6 +153,7 @@ aside {
   background: none;
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 .nav-principal a:first-of-type {
   margin-right: 2rem;
@@ -274,19 +275,25 @@ aside {
 .form-usuario {
   background-color: rgb(255, 198, 124);
   height: 100vh;
-  min-height: 800px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
 }
 
+.reverse {
+  flex-direction: row-reverse;
+}
+
 .contenedor-form {
-  padding: 5rem 3rem;
+  padding: 5rem;
   max-width: 500px;
   width: 80%;
+  height: 100%;
   background-color: var(--blanco);
-  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .campo-form {
@@ -369,6 +376,7 @@ aside {
     border-top-left-radius: 5rem;
     border-top-right-radius: 5rem;
     padding-bottom: 150px;
+    padding: 5rem 3rem;
   }
 
   .animation {
@@ -430,6 +438,10 @@ aside {
 
   .pt-0 {
     padding-top: 0;
+  }
+
+  .pt-80 {
+    padding-top: 80%;
   }
 }
 

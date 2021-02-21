@@ -73,11 +73,11 @@ const SingIn = (props) => {
 
   return (
     <>
-      <div className="form-usuario">
+      <div className="form-usuario reverse">
         <Animation />
         {alert ? <div className={`alerta ${alert.category}`}>{alert.msg}</div> : null}
         <div className="contenedor-form sombra-dark">
-          <h1>Obtener una cuenta</h1>
+          <h1 className="singin-titulo">Obtener una cuenta</h1>
           <form onSubmit={onSubmit}>
             <div className="campo-form">
               <label htmlFor="user">usuario</label>
