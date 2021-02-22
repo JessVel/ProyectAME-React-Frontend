@@ -12,6 +12,7 @@ const AuthState = (props) => {
     authentication: null,
     user: null,
     message: null,
+    cargando: true,
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -19,8 +20,6 @@ const AuthState = (props) => {
   const registerUser = async (data) => {
     try {
       const response = await ClientAxios.post("/api/usuarios", data);
-
-      console.log(response.data.token);
 
       dispatch({
         type: REGISTER_SUCESS,
@@ -30,7 +29,6 @@ const AuthState = (props) => {
       //Obtener el usuario
       authenticUser();
     } catch (error) {
-      console.log(error.response);
       const alert = {
         msg: error.response.data.msg,
         categoria: "alerta-error",
@@ -51,16 +49,12 @@ const AuthState = (props) => {
     }
     try {
       const response = await ClientAxios.get("/api/auth");
-      console.log(response);
 
       dispatch({
         type: GET_USER,
         payload: response.data.usuario,
       });
-      console.log(response);
     } catch (error) {
-      console.log(error.response);
-
       dispatch({
         type: LOGIN_ERROR,
       });
@@ -71,7 +65,6 @@ const AuthState = (props) => {
   const logInUser = async (data) => {
     try {
       const response = await ClientAxios.post("/api/auth", data);
-      console.log(response);
 
       dispatch({
         type: LOGIN_SUCCESS,
@@ -81,7 +74,6 @@ const AuthState = (props) => {
       //obtener usuario
       authenticUser();
     } catch (error) {
-      console.log(error.response.data.msg);
       const alert = {
         msg: error.response.data.msg,
         categoria: "alerta-error",
@@ -107,6 +99,7 @@ const AuthState = (props) => {
         authentication: state.authentication,
         user: state.user,
         message: state.message,
+        cargando: state.cargando,
         registerUser,
         logInUser,
         authenticUser,
