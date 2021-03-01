@@ -2,8 +2,6 @@ const express = require("express");
 const connectDB = require("./config/db");
 const cors = require("cors");
 
-const { success } = require("consola");
-
 const app = express();
 
 connectDB();
@@ -20,8 +18,5 @@ app.use("/api/proyectos", require("./routes/proyecto_routes"));
 app.use("/api/tareas", require("./routes/tarea_routes"));
 
 app.listen(PORT, () => {
-  success({
-    badge: true,
-    message: `Server running in ${PORT}`,
-  });
+  console.log(`Server running in ${PORT}`);
 });
