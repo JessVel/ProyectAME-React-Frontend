@@ -6,7 +6,7 @@ import AuthContext from "../../context/authentication/authContext";
 import Swal from "sweetalert2";
 import Animation from "../animation/animation";
 
-const SingIn = (props) => {
+const SingIn = props => {
   const { alert, showAlert } = useContext(AlertContext);
 
   const authContext = useContext(AuthContext);
@@ -40,9 +40,9 @@ const SingIn = (props) => {
   });
 
   // Extraer datos de usuario
-  const { user, name, lastname, email, password, token, confirm } = usuario;
+  const { user, name, lastname, email, password, confirm } = usuario;
 
-  const onChange = (e) => {
+  const onChange = e => {
     setUsuario({
       ...usuario,
       [e.target.name]: e.target.value,
@@ -50,7 +50,7 @@ const SingIn = (props) => {
   };
 
   //iniciar sesion
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
 
     if (user.trim() === "" || name.trim() === "" || lastname.trim() === "" || email.trim() === "" || password.trim() === "" || confirm.trim() === "") {

@@ -6,7 +6,7 @@ import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 
 const Tarea = ({ tarea }) => {
-  const { eliminarTarea, obtenerTareas, cambiarEstadoTarea, guardarTareaActual } = useContext(tareaContext);
+  const { eliminarTarea, obtenerTareas, actualizarTarea, guardarTareaActual } = useContext(tareaContext);
 
   const { proyectoSeleccionado } = useContext(proyectoContext);
 
@@ -18,7 +18,9 @@ const Tarea = ({ tarea }) => {
     buttonsStyling: false,
   });
 
-  const handleOnClick = (id) => {
+  const proyecto = proyectoSeleccionado[0]._id;
+
+  const handleOnClick = id => {
     swalWithBootstrapButtons
       .fire({
         title: "Estas seguro?",
@@ -29,10 +31,10 @@ const Tarea = ({ tarea }) => {
         cancelButtonText: "No, cancelar!",
         reverseButtons: true,
       })
-      .then((result) => {
+      .then(result => {
         if (result.isConfirmed) {
-          eliminarTarea(id);
-          obtenerTareas(proyectoSeleccionado[0].id);
+          eliminarTarea(id, proyecto);
+          obtenerTareas(proyecto);
           swalWithBootstrapButtons.fire("Eliminado!", "Se ha eliminado la tarea.", "success");
           return;
         } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -41,16 +43,16 @@ const Tarea = ({ tarea }) => {
       });
   };
 
-  const cambiarEstado = (tarea) => {
+  const cambiarEstado = tarea => {
     if (tarea.estado) {
       tarea.estado = false;
     } else {
       tarea.estado = true;
     }
-    cambiarEstadoTarea(tarea);
+    actualizarTarea(tarea);
   };
 
-  const seleccionarTarea = (tarea) => {
+  const seleccionarTarea = tarea => {
     guardarTareaActual(tarea);
   };
   return (
@@ -71,7 +73,7 @@ const Tarea = ({ tarea }) => {
         <button type="button" className="btn btn-primario" onClick={() => seleccionarTarea(tarea)}>
           <FontAwesomeIcon icon={faEdit} />
         </button>
-        <button type="button" className="btn btn-secundario" onClick={() => handleOnClick(tarea.id)}>
+        <button type="button" className="btn btn-secundario" onClick={() => handleOnClick(tarea._id)}>
           <FontAwesomeIcon icon={faTrash} />
         </button>
       </div>

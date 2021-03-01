@@ -7,9 +7,10 @@ const RutaPrivada = ({ component: Component, ...props }) => {
 
   useEffect(() => {
     authenticUser();
+    // eslint-disable-next-line
   }, []);
 
-  return <Route {...props} render={(props) => (!authentication && !cargando ? <Redirect to="/" /> : <Component {...props} />)} />;
+  return <Route {...props} render={props => (!authentication && !cargando ? <Redirect to="/" /> : <Component {...props} />)} />;
 };
 
 export default RutaPrivada;

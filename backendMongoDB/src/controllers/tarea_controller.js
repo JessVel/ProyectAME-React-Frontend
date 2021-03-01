@@ -22,7 +22,7 @@ exports.crearTarea = async (req, res) => {
 
     const tarea = new TareaModel(req.body);
     await tarea.save();
-    res.json({ tarea });
+    res.json(tarea);
   } catch (error) {
     console.log(error);
     res.status(500).send("Hubo un error");
@@ -31,19 +31,18 @@ exports.crearTarea = async (req, res) => {
 
 exports.obtenerTareas = async (req, res) => {
   try {
-    const { proyecto } = req.body;
+    const proyecto = await ProyectoModel.findById(req.params.id);
 
-    const existeProyecto = await ProyectoModel.findById(proyecto);
-    if (!existeProyecto) {
+    if (!proyecto) {
       return res.status(404).json({ msg: "Proyecto no encontrado" });
     }
 
-    if (existeProyecto.creador.toString() !== req.user.id) {
+    if (proyecto.creador.toString() !== req.user.id) {
       return res.status(401).json({ msg: "No autorizado" });
     }
 
     const tareas = await TareaModel.find({ proyecto });
-    res.json({ tareas });
+    res.json(tareas);
   } catch (error) {
     console.log(error);
     res.status(500).send("hubo un error");
@@ -68,12 +67,12 @@ exports.actualizarTarea = async (req, res) => {
 
     const nuevaTarea = {};
 
-    if (nombre) nuevaTarea.nombre = nombre;
-    if (estado) nuevaTarea.estado = estado;
+    nuevaTarea.nombre = nombre;
+    nuevaTarea.estado = estado;
 
     tarea = await TareaModel.findOneAndUpdate({ _id: req.params.id }, nuevaTarea, { new: true });
 
-    res.json({ tarea });
+    res.json(tarea);
   } catch (error) {
     console.log(error);
     res.status(500).send("Hubo un error");
@@ -82,9 +81,13 @@ exports.actualizarTarea = async (req, res) => {
 
 exports.eliminarTarea = async (req, res) => {
   try {
-    const { proyecto } = req.body;
+    const { proyecto } = req.query;
+
+    console.log(proyecto);
 
     let tarea = await TareaModel.findById(req.params.id);
+
+    console.log(tarea);
 
     if (!tarea) {
       return res.status(404).json({ mgs: "La tarea no existe" });

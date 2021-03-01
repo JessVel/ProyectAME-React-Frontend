@@ -42,9 +42,9 @@ const ListadoTareas = () => {
         cancelButtonText: "No, cancelar!",
         reverseButtons: true,
       })
-      .then((result) => {
+      .then(result => {
         if (result.isConfirmed) {
-          eliminarProyecto(proyectoSeleccionado[0].id);
+          eliminarProyecto(proyectoSeleccionado[0]._id);
           swalWithBootstrapButtons.fire("Eliminado!", "Se ha eliminado la tarea.", "success");
           return;
         } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -62,7 +62,9 @@ const ListadoTareas = () => {
         </button>
       </div>
 
-      <ul className="listado-tareas">{tareasProyecto.length === 0 ? <li style={{ textAlign: "center" }}>No hay tareas</li> : tareasProyecto.map((tarea) => <Tarea key={tarea.id} tarea={tarea} />)}</ul>
+      <ul className="listado-tareas">
+        {tareasProyecto.length === null ? <li style={{ textAlign: "center" }}>No hay tareas</li> : tareasProyecto.map(tarea => <Tarea key={tarea._id} tarea={tarea} />)}
+      </ul>
     </>
   );
 };

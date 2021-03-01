@@ -23,11 +23,13 @@ export default (state, action) => {
     case LOG_OUT:
       localStorage.removeItem("token");
       return {
+        ...state,
         token: null,
         user: null,
         authentication: null,
         cargando: false,
       };
+
     case REGISTER_ERROR:
     case LOGIN_ERROR:
       localStorage.removeItem("token");

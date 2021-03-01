@@ -1,25 +1,24 @@
-import react, { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import proyectoContext from "../../context/proyectos/proyectoContext";
 import Swal from "sweetalert2";
 
 const NuevoProyecto = () => {
   const { formulario, mostrarFormulario, agregarProyecto } = useContext(proyectoContext);
 
-  //State para proyectos
   const [proyecto, setProyecto] = useState({
     nombre: "",
   });
 
   const { nombre } = proyecto;
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setProyecto({
       ...proyecto,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     if (nombre === "") {

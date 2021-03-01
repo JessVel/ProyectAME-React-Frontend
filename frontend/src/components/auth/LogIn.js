@@ -6,7 +6,7 @@ import AuthContext from "../../context/authentication/authContext";
 import AniWelcome from "../animation/animationWelcome";
 import Swal from "sweetalert2";
 
-const LogIn = (props) => {
+const LogIn = props => {
   const { message, authentication, logInUser } = useContext(AuthContext);
 
   const { alert, showAlert } = useContext(AlertContext);
@@ -24,6 +24,7 @@ const LogIn = (props) => {
         text: message.msg,
       });
     }
+    // eslint-disable-next-line
   }, [authentication, message, props.history]);
 
   // State para iniciar sesion
@@ -35,7 +36,7 @@ const LogIn = (props) => {
   // Extraer datos de usuario
   const { user, password } = userValues;
 
-  const onChange = (e) => {
+  const onChange = e => {
     setUserValues({
       ...userValues,
       [e.target.name]: e.target.value,
@@ -43,7 +44,7 @@ const LogIn = (props) => {
   };
 
   //iniciar sesion
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
 
     if (user.trim() === "" || password.trim() === "") {

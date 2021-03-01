@@ -9,7 +9,7 @@ const { check } = require("express-validator");
 router.post("/", auth, [check("nombre", "El nombre es obligatorio").not().isEmpty(), check("proyecto", "El proyecto es obligatorio").not().isEmpty()], tareaController.crearTarea);
 
 //obtener tareas por proyecto
-router.get("/", auth, tareaController.obtenerTareas);
+router.get("/:id", auth, tareaController.obtenerTareas);
 
 // actualizar tarea
 router.put("/:id", auth, tareaController.actualizarTarea);

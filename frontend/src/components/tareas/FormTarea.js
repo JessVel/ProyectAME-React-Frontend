@@ -28,14 +28,14 @@ const FormTarea = () => {
     return null;
   }
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setTarea({
       ...tarea,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     if (!nombre) {
@@ -48,15 +48,14 @@ const FormTarea = () => {
     }
 
     if (tareaSeleccionada === null) {
-      tarea.proyectoId = proyectoSeleccionado[0].id;
-      tarea.estado = false;
+      tarea.proyecto = proyectoSeleccionado[0]._id;
       agregarTarea(tarea);
     } else {
       actualizarTarea(tarea);
       Swal.fire("Listo!", "Se actualizó la tarea", "success");
     }
 
-    obtenerTareas(proyectoSeleccionado[0].id);
+    obtenerTareas(proyectoSeleccionado[0]._id);
 
     setTarea({
       nombre: "",

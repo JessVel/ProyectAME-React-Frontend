@@ -6,7 +6,7 @@ import { REGISTER_SUCESS, REGISTER_ERROR, GET_USER, LOGIN_SUCCESS, LOGIN_ERROR, 
 import tokenAuth from "../../config/tokenAuth";
 import ClientAxios from "../../config/axios";
 
-const AuthState = (props) => {
+const AuthState = props => {
   const initialState = {
     token: localStorage.getItem("token"),
     authentication: null,
@@ -17,7 +17,7 @@ const AuthState = (props) => {
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-  const registerUser = async (data) => {
+  const registerUser = async data => {
     try {
       const response = await ClientAxios.post("/api/usuarios", data);
 
@@ -62,7 +62,7 @@ const AuthState = (props) => {
   };
 
   //Iniciar sesion
-  const logInUser = async (data) => {
+  const logInUser = async data => {
     try {
       const response = await ClientAxios.post("/api/auth", data);
 
@@ -71,7 +71,6 @@ const AuthState = (props) => {
         payload: response.data,
       });
 
-      //obtener usuario
       authenticUser();
     } catch (error) {
       const alert = {

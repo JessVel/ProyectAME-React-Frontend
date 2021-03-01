@@ -8,6 +8,7 @@ const ListadoProyectos = () => {
 
   useEffect(() => {
     obtenerProyectos();
+    // eslint-disable-next-line
   }, []);
 
   if (listaProyectos.length === 0)
@@ -19,8 +20,8 @@ const ListadoProyectos = () => {
 
   return (
     <ul className="listado-proyectos">
-      {listaProyectos.map((item) => (
-        <Proyecto key={item.id} item={item} />
+      {listaProyectos.map(item => (
+        <Proyecto key={item._id} item={item} />
       ))}
     </ul>
   );
