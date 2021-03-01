@@ -371,7 +371,7 @@ aside {
   color: var(--blanco);
 }
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
   label {
     display: none;
   }
